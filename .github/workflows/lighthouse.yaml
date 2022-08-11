@@ -1,5 +1,9 @@
 name: Run lighthouse CI When Push
-on: [push]
+on: pull_request
+  branches:
+    - main
+    - develop
+  paths: "frontend/**" #frontend 폴더의 파일이 하나라도 수정됬을 때 trigger
 jobs:
   lhci:
     name: Lighthouse CI
