@@ -15,14 +15,11 @@ jobs:
         with:
           node-version: 17.4.0
 
-      - name: Install packages
+      - name: Install packages and Build
         run: |
           npm install
-        working-directory: ${{ env.working-directory }}
-
-      - name: Build
-        run: |
           npm run build
+        working-directory: ${{ env.working-directory }}
 
       - name: Run Lighthouse CI
         env:
