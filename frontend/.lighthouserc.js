@@ -7,7 +7,9 @@ module.exports = {
       numberOfRuns: 5, // lighthouse가 실행되는 횟수
     },
     upload: {
-      target: "temporary-public-storage", // 보고서 저장 위치
+      target: "filesystem",
+      outputDir: "./lhci_reports",
+      reportFilenamePattern: "%%PATHNAME%%-%%DATETIME%%-report.%%EXTENSION%%",
     },
     assert: {
       assertions: {
