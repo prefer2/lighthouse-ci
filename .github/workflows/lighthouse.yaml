@@ -13,7 +13,7 @@ jobs:
         id: pr-labels
         uses: joerick/pr-labels-action@v1.0.6
 
-      - name: frontend Label 체크
+      - name: frontend label 체크
         id: frontend
         if: contains(steps.pr-labels.outputs.labels, ' frontend ')
         run: echo "::set-output name=status::true"
@@ -31,6 +31,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 17.4.0
+
+      - name: PR Label 확인
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.6
 
       - name: Install packages and Build
         run: |
