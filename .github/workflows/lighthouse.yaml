@@ -6,6 +6,18 @@ on:
       - develop
     paths: "frontend/**" #frontend 폴더의 파일이 하나라도 수정됬을 때 trigger
 jobs:
+  label-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: PR Label 확인
+        id: pr-labels
+        uses: joerick/pr-labels-action@v1.0.6
+
+      - name: frontend Label 체크
+        id: frontend
+        if: contains(steps.pr-labels.outputs.labels, ' frontend ')
+        run: echo "::set-output name=status::true"
+
   lhci:
     name: Lighthouse CI
     runs-on: ubuntu-latest
